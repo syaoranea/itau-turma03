@@ -35,7 +35,7 @@ public abstract class Conta {
 
     @Override
     public String toString() {
-        return numero + ": " + saldo;
+        return String.format("%d : R$ %.2f", numero, saldo); 
     }
     
 }

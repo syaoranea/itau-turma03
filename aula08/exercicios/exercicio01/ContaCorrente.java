@@ -21,7 +21,7 @@ public class ContaCorrente extends Conta {
         return super.depositar(valor - TAXA_DEPOSITO);
     }
 
-    @Override
+    @Override // sobrescrever as funcionalidade, mudando o comportamento
     public String toString() {
         return "Conta corrente: " + super.toString();
     }

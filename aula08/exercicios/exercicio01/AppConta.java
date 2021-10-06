@@ -6,6 +6,11 @@ public class AppConta {
     public static void main(String[] args) {
         Scanner entrada = new Scanner(System.in);
         int opcao;
+        int numeroConta;
+        double limite, valor;
+        ContaCorrente cc = null;
+        ContaEspecial ce = null;
+        ContaPoupanca cp = null;
 
         do {
             System.out.println("1- Nova Conta Corrente");
@@ -19,23 +24,50 @@ public class AppConta {
 
             switch (opcao) {
                 case 1:
-                    System.out.println("Opção 1");
+                    System.out.println("Digite o número da conta:");
+                    numeroConta = entrada.nextInt();
+                    cc = new ContaCorrente(numeroConta);
                     break;
 
                 case 2:
-                    System.out.println("Opção 2");
+                    System.out.println("Digite o número da conta:");
+                    numeroConta = entrada.nextInt();
+                    System.out.println("Informe o valor do limite:");
+                    limite = entrada.nextDouble();
+                    ce = new ContaEspecial(numeroConta, limite);
                     break;
 
                 case 3:
+                    System.out.println("Digite o número da conta:");
+                    numeroConta = entrada.nextInt();
+                    cp = new ContaPoupanca(numeroConta);
                     break;
 
                 case 4:
+                    System.out.println("Informe o valor do depósito:");
+                    valor = entrada.nextDouble();
+
+                    if (cc.depositar(valor)) {
+                        System.out.println("Depósito realizado.");
+                    } else {
+                        System.out.println("Falha ao realizar o depósito.");
+                    }
                     break;
 
                 case 5:
+                    System.out.println("Informe o valor do saque:");
+                    valor = entrada.nextDouble();
+
+                    if (cc.sacar(valor)) {
+                        System.out.println("Saque realizado.");
+                    } else {
+                        System.out.println("Falha ao realizar o saque.");
+                    }
                     break;
 
                 case 6:
+                    System.out.println(cc);
+                    // System.out.println(ce);
                     break;
 
                 case 7:
