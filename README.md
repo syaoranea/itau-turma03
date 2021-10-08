@@ -16,3 +16,9 @@ https://training.github.com/downloads/pt_BR/github-git-cheat-sheet.pdf
 
 ### Git HowTo
 https://githowto.com/pt-BR/
+
+---
+
+### Http Status Codes
+https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
+
