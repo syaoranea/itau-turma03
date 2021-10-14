@@ -22,3 +22,10 @@ https://githowto.com/pt-BR/
 ### Http Status Codes
 https://developer.mozilla.org/pt-BR/docs/Web/HTTP/Status
 
+---
+
+## Spring
+
+### JPA Query Methods
+https://docs.spring.io/spring-data/jpa/docs/current/reference/html/#jpa.query-methods
+
