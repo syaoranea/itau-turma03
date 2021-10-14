@@ -1,5 +1,8 @@
 package br.itau.spring03.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,6 +34,29 @@ public class UsuarioController {
         }
         return ResponseEntity.notFound().build();
     }
+
+    @GetMapping("/codigo/{codigo}")
+    public ResponseEntity<Object> buscarUsuario2(@PathVariable long codigo) {
+        Object usuario = repo.buscarUsuario(codigo);
+
+        if(usuario != null) {
+            return ResponseEntity.ok(usuario);
+        }
+        return ResponseEntity.notFound().build();
+    }
+
+    @GetMapping("/todos")
+    public List<UsuarioDTO> listarPorNome() {
+        List<Usuario> listaUsuarios = repo.findAllByOrderByNome();
+        List<UsuarioDTO> listaDTO = new ArrayList<>();
+
+        for (Usuario usuario : listaUsuarios) {
+            listaDTO.add( new UsuarioDTO(usuario));
+        }
+
+        return listaDTO;
+    }
+
 
     @PostMapping("/email")
     public ResponseEntity<UsuarioDTO> buscaPorEmail(@RequestBody Usuario usuario) {
