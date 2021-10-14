@@ -33,7 +33,7 @@ public class FornecedorController {
         if (fornecedor != null) {
             return ResponseEntity.ok(fornecedor);
         }
-        return ResponseEntity.notFound().build(); 
+        return ResponseEntity.notFound().build();
     }
 
     @GetMapping
@@ -51,7 +51,7 @@ public class FornecedorController {
 
     @PutMapping("/atualizar")
     public ResponseEntity<Fornecedor> atualizar(@RequestBody Fornecedor fornecedor) {
-        
+
         long id = fornecedor.getCodigo();
         if (id == 0) { // não mandou o código do Fornecedor
             return ResponseEntity.badRequest().build();
@@ -77,8 +77,12 @@ public class FornecedorController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
         }
 
-        repo.deleteById(codigo);
-        return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // OK, mas sem conteúdo no corpo
+        try {
+            repo.deleteById(codigo);
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build(); // OK, mas sem conteúdo no corpo
+        } catch (Exception ex) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        }
     }
 
 }
